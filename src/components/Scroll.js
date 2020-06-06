@@ -4,7 +4,7 @@ class Scroll extends Component {
 	render() {
 		return (
 			<div>
-				<img src="../public/images/parchment" alt="scroll"/>
+				<img src="../../public/images/parchment" alt="scroll"/>
 			</div>
 		);
 	}
