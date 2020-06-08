@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PuzzleModel from '../models/puzzle';
 
 class PuzzleCreate extends Component {
 	state = {
