@@ -20,7 +20,8 @@ class PuzzleCreate extends Component {
 	}
 
 	handleChange = (event) => {
-		if (event.target.type !== "text") {
+		console.log("selection");
+		if (event.target.type === "checkbox") {
 			this.setState({
 				completed: !this.state.completed
 			})
@@ -49,13 +50,14 @@ class PuzzleCreate extends Component {
 							<option value="scramble">Scramble</option>
 							<option value="tilePlacement">Tile Placement</option>
 							<option value="Cypher">Cypher</option>
-							</select>
+						</select>
 					</div>
 					<div className="form-input">
 						<input 
 							type="text"
 							name="imageFile"
 							id="imageFile"
+							placeholder="link to images"
 							value={this.state.imageFile}
 							onChange={this.handleChange}	
 							/>
@@ -65,6 +67,7 @@ class PuzzleCreate extends Component {
 							type="text"
 							name="answerKey"
 							id="answerKey"
+							placeholder="answer"
 							value={this.state.answerKey}
 							onChange={this.handleChange}	
 							/>
@@ -74,6 +77,7 @@ class PuzzleCreate extends Component {
 							type="number"
 							name="difficulty"
 							id="difficulty"
+							placeholder="difficulty"
 							value={this.state.difficulty}
 							onChange={this.handleChange}	
 							/>
@@ -84,7 +88,7 @@ class PuzzleCreate extends Component {
 							type="checkbox"
 							name="completed"
 							id="completed"
-							unchecked={this.state.completed}
+							unchecked={this.state.completed ? 'checked' : 'unchecked'}
 							onChange={this.handleChange}
 						/>
 					</div>

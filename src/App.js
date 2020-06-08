@@ -1,4 +1,5 @@
 import React from 'react';
+import routes from './config/routes'
 import Scroll from './components/Scroll'
 import Compass from './components/Compass'
 import './App.css';
@@ -6,8 +7,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Scroll />
-      <Compass />
+      { routes }
     </div>
   );
 }

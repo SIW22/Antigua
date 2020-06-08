@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PuzzleModel from '../models/puzzle'
+import PuzzleCard from '../components/PuzzleCard'
 import { Link } from 'react-router-dom'
 
 class PuzzleList extends Component {
@@ -21,7 +22,7 @@ class PuzzleList extends Component {
 		let puzzleList = this.state.puzzles.map((puzzle, index) => {
 			return (
 				<Link key={ index } to={`/puzzles/${ puzzle.id}`}>
-					{ ...puzzle }
+					<PuzzleCard { ...puzzle } />
 				</Link>
 			);
 		})
