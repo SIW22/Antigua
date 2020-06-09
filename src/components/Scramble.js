@@ -5,7 +5,7 @@ import Draggable from './Draggable';
 const answerKey = ['S','T','E','A','M'];
 const width = 80;
 
-const App = () => {
+const Scramble = () => {
   const tiles = ['M','A','T','E','S'];
   const [state, setState] = useState({
     order: tiles,
@@ -77,7 +77,7 @@ const App = () => {
     );
   }
   
-export default App;
+export default Scramble;
 
 const Container = styled.div`
   height: 100px;

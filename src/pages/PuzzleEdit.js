@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PuzzleModel from '../models/puzzle';
 
-class PuzzleCreate extends Component {
+class PuzzleEdit extends Component {
 	state = {
 		puzzleType: '',
 		imageFile: '',
@@ -13,15 +13,13 @@ class PuzzleCreate extends Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault()
-		console.log(this.state)
-		PuzzleModel.create(this.state)
+		PuzzleModel.update(this.state)
 			.then(data => {
 				this.props.history.push('/puzzles')
 			})
 	}
 
 	handleChange = (event) => {
-		console.log("selection");
 		if (event.target.type === "checkbox") {
 			this.setState({
 				completed: !this.state.completed
@@ -36,7 +34,7 @@ class PuzzleCreate extends Component {
 	render() {
 		return (
 			<div>
-				<h2>Create New Puzzle</h2>
+				<h2>Edit Puzzle</h2>
 				<form onSubmit={this.handleSubmit}>
 					<div className="form-input">
 						<select 
@@ -110,4 +108,4 @@ class PuzzleCreate extends Component {
 	}
 }
 
-export default PuzzleCreate;
+export default PuzzleEdit;

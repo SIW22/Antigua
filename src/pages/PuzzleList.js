@@ -21,7 +21,7 @@ class PuzzleList extends Component {
 	render() {
 		let puzzleList = this.state.puzzles.map((puzzle, index) => {
 			return (
-				<Link key={ index } to={`/puzzles/${ puzzle.id}`}>
+				<Link key={ index } to={`/puzzles/${ puzzle._id }`}>
 					<PuzzleCard { ...puzzle } />
 				</Link>
 			);
