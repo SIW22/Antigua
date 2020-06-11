@@ -7,8 +7,8 @@ class Compass extends Component {
 				<div>
 					<img src="../../public/images/compass.png" alt="compass"/>
 				</div>
-				<div class="compass-container">
-					<img class="compass" src="https://i.imgur.com/tgHIqcr.png" alt="compass"></img>
+				<div className="compass-container">
+					<img className="compass" src="https://i.imgur.com/tgHIqcr.png" alt="compass"></img>
 				</div>
 			</>
 		);
