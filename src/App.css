@@ -3,9 +3,14 @@
 	padding: 0;
 }
 
+body { 
+	background-color: #007090;
+	z-index: 1;
+}
+
 .puzzle-card {
-	width: 250px;
-	height: 150px; 
+	width: 300px;
+	height: 100px; 
 	background-color: whitesmoke;
 	display: flex;
 	flex-direction: column;
@@ -13,5 +18,83 @@
 	align-items: center;
 	line-height: 20px;
 	margin: 10px;
+	padding: 10px;
 	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.waves {
+  display: flex;
+  z-index: 2;
+}
+
+img {
+  width: 100vw;
+  height: 100vh;
+}
+
+@keyframes fadein {   
+  0%, 100% { opacity: 0; }
+  25% { opacity: .1 }
+  50% { opacity: .0; }
+  75% { opacity: .1; }
+}
+
+@keyframes fadeout {
+  0%, 100% { opacity: .1; }
+  25% { opacity: 0; }
+  50% { opacity: .1; }
+  75% { opacity: 0; }
+}
+
+.wave1 {
+  position: absolute;
+  animation: fadein 6s linear infinite;
+}
+
+.wave2 {
+  position: absolute;
+  transform: rotate(180deg);
+  animation-delay: 1.5s;
+  animation: fadeout 6s linear infinite;
+}
+
+.wave3 {
+  position: absolute;
+  animation-delay: 3s;
+  animation: fadein 6s linear infinite;
+}
+
+.wave4 {
+  position: absolute;
+  transform: rotate(180deg);
+  animation-delay: 4.5s;
+  animation: fadeout 6s linear infinite;
+}
+
+@keyframes gradual-fade {
+  0%, 100% { opacity: 100% }
+  30% { opacity: 100% }
+  40% { opacity: 50% }
+  50% { z-index: 0 }
+  60% { opacity: 0% }
+  90% { opacity: 0% }
+}
+
+.logo {
+  width: 450px;
+  height: auto;
+  margin: 50px;
+  filter: drop-shadow( 5px 5px 5px rgba(0, 0, 0, .5));
+  z-index: 5;
+  animation: gradual-fade 10s linear infinite;
+}
+
+.compass {
+  width: 250px;
+  height: 250px;
+  margin-left: 70px;
+  margin-top: 400px;
+  position: absolute;
+  z-index: 25;
+  filter: drop-shadow( 0px 5px 5px rgba(0, 0, 0, .5)); 
 }

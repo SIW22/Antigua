@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 
-class compass extends Component {
+class Compass extends Component {
 	render() {
 		return (
-			<div>
-				<img src="../../public/images/compass" alt="compass"/>
-			</div>
+			<>
+				<div>
+					<img src="../../public/images/compass.png" alt="compass"/>
+				</div>
+				<div class="compass-container">
+					<img class="compass" src="https://i.imgur.com/tgHIqcr.png" alt="compass"></img>
+				</div>
+			</>
 		);
 	}
 }
 
-export default compass;
+export default Compass;

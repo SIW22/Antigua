@@ -21,11 +21,15 @@ class PuzzleModel {
 		.then(res => res.json())
 	}
 
-	static update = (puzzleId) => {
+	static update = (puzzleId, puzzleData) => {
 		return fetch(`${url}/puzzles/${puzzleId}`, {
 			method: "PUT",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(puzzleData)
 		})
-		.then(res => res.json())
+		.then(res => res.json()) 
 	}
 
 	static delete = (puzzleId) => {

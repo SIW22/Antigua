@@ -1,12 +1,13 @@
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import Draggable from './Draggable';
+import shuffle from 'shuffle-array'
 
 const answerKey = ['S','T','E','A','M'];
 const width = 80;
 
 const Scramble = () => {
-  const tiles = ['M','A','T','E','S'];
+  const tiles = shuffle(answerKey.map(l => l));
   const [state, setState] = useState({
     order: tiles,
     dragOrder: tiles,

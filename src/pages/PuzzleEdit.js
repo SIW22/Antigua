@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import PuzzleModel from '../models/puzzle';
 
 class PuzzleEdit extends Component {
-	state = {
-		puzzleType: '',
-		imageFile: '',
-		answerKey: '',
-		clue: '',
-		difficulty: 0,
-		completed: false
-	}
+	state = {...this.props.location.state}
+	
+	// state = {
+	// 	puzzleType: '',
+	// 	imageFile: '',
+	// 	answerKey: '',
+	// 	clue: '',
+	// 	difficulty: 0,
+	// 	completed: false
+	// }
 
 	handleSubmit = (event) => {
 		event.preventDefault()
-		PuzzleModel.update(this.state)
+		PuzzleModel.update(this.props.match.params.id, this.state)
 			.then(data => {
 				this.props.history.push('/puzzles')
 			})
