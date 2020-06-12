@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PuzzleModel from '../models/puzzle';
 import Ocean from '../components/Ocean';
+import Scroll from '../components/Scroll';
+import Compass from '../components/Compass';
 import '../App.css';
 
 class Home extends Component {
+
 	state = {
 		puzzle: {},
 		currentPuzzleId: this.props.match.params.id
@@ -19,52 +22,39 @@ class Home extends Component {
 		.catch(err => console.log(err))
 	} 
 
-	// fetchData = () => {
-	// 	let results = PuzzleModel.all({ puzzle: 'scramble' });
-	// 	console.log(results);
-	// 	results.count(function(err, qty) {
-	// 		if (err) {
-	// 			return (err);
-	// 		}
-	// 		let random = Math.floor(Math.random() * qty);
-	// 		console.log(random);
-	// 		this.findOne().skip(random).exec()
-	// 	}).bind(this) 
-	// 	.then(data => this.setState({ puzzles: this.state.currentPuzzleId }))
-	// 	.catch(err => console.log(err))
-	// }; 
-	
-	// componentDidMount() {
-	// 	this.randomPuzzleOfType()
-	// }
+	rolloutScroll = () => {
+		let parchment1 = document.querySelector('.image');
+		parchment1.classList.add('reveal');
+		parchment1.classList.remove('conceal');
+		let rollout = document.querySelector('.assembly');
+		rollout.classList.add('rollout');
+		rollout.classList.remove('rollup');
+		console.log("Rollout Clicked")
+	}
 
-	// randomPuzzleOfType = function(callback) {
-	// 	this.count(function(err, count) {
-	// 		if (err) {
-	// 			return callback(err);
-	// 		}
-	// 		let random = Math.floor(Math.random() * count);
-	// 		this.findOne().skip(random).exec(callback);
-	// 	}.bind(this));
-
-	// };
-
-		// let results = PuzzleModel.all(
-		// 	{ puzzleType: 'scramble' }
-		// 	);
-		// let random = Math.floor(Math.random() * results.length);
-		// results.findOne().skip(random).exec((err, result) => {
-		// 	console.log(result);
-		// 	})
-		// .then(data => this.setState({ currentPuzzleId: data.result }))
-		// .catch(err => console.log(err))
-	// }; 
+	rollupScroll = () => {
+		let parchment2 = document.querySelector('.image');
+		parchment2.classList.add('conceal');
+		parchment2.classList.remove('reveal');
+		let rollup = document.querySelector('.assembly');
+		rollup.classList.add('rollup');
+		rollup.classList.remove('rollout');
+		console.log("Rollup Clicked")
+	}
 
 	render() {
 		return (
 			<div>
 				<Ocean />
+				<Scroll />
+
+				<button onClick={ this.rolloutScroll }>Roll Out</button>
+
+				<button onClick={ this.rollupScroll }>Roll Up</button>
+
 				<button>Load Puzzle</button>
+
+				<Compass />
 			</div>
 		);
 	}

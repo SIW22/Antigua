@@ -4,9 +4,9 @@ class Compass extends Component {
 	render() {
 		return (
 			<>
-				<div>
+				{/* <div>
 					<img src="../../public/images/compass.png" alt="compass"/>
-				</div>
+				</div> */}
 				<div className="compass-container">
 					<img className="compass" src="https://i.imgur.com/tgHIqcr.png" alt="compass"></img>
 				</div>

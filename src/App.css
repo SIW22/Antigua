@@ -1,11 +1,23 @@
 * {
 	margin: 0;
-	padding: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'Kamandungan';
+  font-style: normal;
+  src: local('Kamandungan-Regular'), local('Kamandungan'),
+    url(./fonts/Kamandungan-Regular.ttf) format('truetype');
 }
 
 body { 
 	background-color: #007090;
-	z-index: 1;
+  z-index: 1;
+  perspective: 900px;
+  perspective-origin: center;
+  min-width: 100vw;
+  min-height: 100vh;
+  font-family: 'Kamandungan-Regular', sans-serif;
 }
 
 .puzzle-card {
@@ -22,14 +34,17 @@ body {
 	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
 }
 
+/* MAIN PAGE */
+
 .waves {
   display: flex;
   z-index: 2;
+  overflow: hidden;
 }
 
 img {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes fadein {   
@@ -71,6 +86,8 @@ img {
   animation: fadeout 6s linear infinite;
 }
 
+/* Logo */
+
 @keyframes gradual-fade {
   0%, 100% { opacity: 100% }
   30% { opacity: 100% }
@@ -81,7 +98,7 @@ img {
 }
 
 .logo {
-  width: 450px;
+  width: 300px;
   height: auto;
   margin: 50px;
   filter: drop-shadow( 5px 5px 5px rgba(0, 0, 0, .5));
@@ -89,12 +106,125 @@ img {
   animation: gradual-fade 10s linear infinite;
 }
 
+/* Compass */
+
 .compass {
-  width: 250px;
-  height: 250px;
-  margin-left: 70px;
-  margin-top: 400px;
+  width: 200px;
+  height: 200px;
+  margin-left: 40px;
+  margin-top: 45px;
   position: absolute;
   z-index: 25;
   filter: drop-shadow( 0px 5px 5px rgba(0, 0, 0, .5)); 
+}
+
+/* SCROLL */
+
+button {
+  padding: 2px 5px;
+  margin: 10px;
+}
+
+/* 2D Scroll */
+.image {
+  position: relative;
+  height: 500px;
+  width: 900px;
+  margin-left: 75px;
+  margin-top: -20px;
+  overflow: hidden;
+  opacity: 0;
+  /* animation: reveal 3s ease; */
+  z-index: 0;
+  filter: drop-shadow( 0 10px 10px rgba(0, 0, 0, 0.75));
+}
+
+.reveal {
+  animation: reveal 3s ease;
+  opacity: 1;
+}
+
+.rollout {
+  animation: rollout 3s ease;
+}
+
+.conceal {
+  animation: conceal 3s ease;
+}
+
+.rollup {
+  animation: rollup 3s ease;
+}
+
+img {
+  height: 500px;
+  width: auto;
+}
+
+@keyframes reveal {
+  0%   {width: 0%;}
+  0%   {opacity: 1;}
+  100% {width: 900px;}
+  100% {opacity: 1;}
+}
+
+@keyframes conceal {
+  0%   {width: 900px;}
+  0%  {opacity: 1;}
+  100% {width: 0%;}
+  100% {opacity: 1;}
+}
+
+/* 3D Scroll */
+.cylinder {
+  position: absolute;
+  margin-top: -250px;
+  margin-left: 75px;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+}
+
+.assembly {
+  /* animation: rollout 3s ease; */
+  animation-fill-mode: forwards;
+}
+
+@keyframes rollout {
+  0%   { transform: translateX(0px) rotateY(180deg); }
+  100%  { transform: translateX(880px) rotateY(880deg); }
+}
+
+@keyframes rollup {
+  0%   { transform: translateX(880px) rotateY(880deg); }
+  100%  { transform: translateX(0px) rotateY(180deg); }
+}
+
+.puzzle-area {
+  width: 700px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropZone {
+	opacity: 1;
+	background-color: white;
+  transition: .5s linear;
+  z-index: 50;
+  top: 100px;
+}
+
+.puzzle-submit-btn {
+  margin-top: 150px;
+  height: 30px;
+  width: 80px;
+}
+
+.dzcorrect {
+	background-color: lightgreen;
+}
+
+.dzincorrect {
+	background-color: #FF739D;
 }

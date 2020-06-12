@@ -1,18 +1,27 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import Draggable from './Draggable';
 import shuffle from 'shuffle-array'
+import PuzzleModel from '../models/puzzle';
 
-const answerKey = ['S','T','E','A','M'];
+// const answerKey = ['S','T','E','A','M'];
 const width = 80;
 
 const Scramble = () => {
-  const tiles = shuffle(answerKey.map(l => l));
-  const [state, setState] = useState({
-    order: tiles,
-    dragOrder: tiles,
-    draggedIndex: null
-  });
+  const [state, setState] = useState({ tiles: [] });
+
+  useEffect(() => {
+    fetchPuzzleData()
+  }, [])
+
+  const fetchPuzzleData = () => {
+    PuzzleModel.singlePuzzle()
+    .then(data =>{
+      console.log(data.puzzles);
+      const tiles = shuffle(data.puzzles.answerKey.map(l=>l));
+      setState({...data.puzzles, order: tiles, dragOrder: tiles, draggedIndex: null, tiles: tiles })
+    })
+  }
 
   const handleDrag = useCallback(({translation, id}) => {
     const delta = Math.round(translation.x / width);
@@ -39,7 +48,7 @@ const Scramble = () => {
 
   const submitAnswer = () => {
     let dropZone = document.querySelector('.dropzone');
-    if (JSON.stringify(answerKey) === JSON.stringify(state.order)) {
+    if (JSON.stringify(state.answerKey) === JSON.stringify(state.order)) {
       dropZone.style.backgroundColor = 'lightgreen';
       console.log('Correct');
       return;
@@ -48,37 +57,51 @@ const Scramble = () => {
       console.log('Incorrect')
     }
   }
+  
+  if (!state) return "...Loading"
+  else {
 
   return (
       <>
-        <Container className="dropzone">
-          {tiles.map(index => {
-            const isDragging = state.draggedIndex === index;
-            const dragged = state.order.indexOf(index) * (width + 10);
-            const left = state.dragOrder.indexOf(index) * (width + 10);
-            return (
-              <Draggable
-                key={index}
-                id={index}
-                onDrag={handleDrag}
-                onDragEnd={handleDragEnd}
-                >
-                <Tile 
-                  isDragging={isDragging}
-                  left={isDragging ? dragged : left}
-                >
-                  {index}
-                </Tile>
-              </Draggable>
-            )
-          })}
-        </Container>
-        <button onClick={() => submitAnswer()} >Submit</button>
+        <PuzzleArea classname="puzzle-area">
+          <Container className="dropzone">
+            {state.tiles.map(index => {
+              const isDragging = state.draggedIndex === index;
+              const dragged = state.order.indexOf(index) * (width + 10);
+              const left = state.dragOrder.indexOf(index) * (width + 10);
+              return (
+                <Draggable
+                  key={index}
+                  id={index}
+                  onDrag={handleDrag}
+                  onDragEnd={handleDragEnd}
+                  >
+                  <Tile 
+                    isDragging={isDragging}
+                    left={isDragging ? dragged : left}
+                  >
+                    {index}
+                  </Tile>
+                </Draggable>
+              )
+            })}
+          </Container>
+          <button className="puzzle-submit-btn" onClick={() => submitAnswer()} >Check Answer</button>
+        </PuzzleArea>
       </>
     );
   }
-  
+}
 export default Scramble;
+
+const PuzzleArea = styled.div`
+  height: 400px;
+  width: 700px;
+  margin-top: -400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const Container = styled.div`
   height: 100px;
@@ -86,6 +109,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 7px;
+  position: absolute;
 `;
 
 const Tile = styled.div.attrs(props => ({

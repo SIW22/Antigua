@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Compass from './Compass';
-
 
 class Ocean extends Component {
 	render() {
@@ -29,8 +27,6 @@ class Ocean extends Component {
 
 					<img src="https://i.imgur.com/0FJ8qsU.png" alt="logo" className="logo"></img>
 					
-					<Compass />
-				
 				</div>
 		);
 	}

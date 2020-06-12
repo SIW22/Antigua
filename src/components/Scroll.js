@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import prefix from 'react-prefixer';
+import Scramble from './Scramble';
+// import { Shaders, Node, GLSL } from "gl-react";
+// import { Surface } from "gl-react-dom";
 
 class Scroll extends Component {
 	state = {
-		puzzle: []
+		contents: []
 	}
-
-	let scrollTexture = "https://i.imgur.com/2MSbsHW.png";
 
 	createAssembly = () => {
 			let assembly = document.createElement("div");
@@ -16,7 +18,7 @@ class Scroll extends Component {
 	createFace = (w, h, x, y, z, rx, ry, rz, tsrc, tx, ty) => {
 			let face = document.createElement("div");
 			face.className = "cylinder";
-			face.style.cssText = PrefixFree.prefixCSS(
+			face.style.cssText = prefix(
 					"background: url(" + tsrc + ") -" + tx + "px " + ty + "px;" +
 					"width:" + w + "px;" +
 					"height:" + h + "px;" +
@@ -28,36 +30,48 @@ class Scroll extends Component {
 	}
 
 	createTube = (dia, height, sides, texture) => {
-			let tube = createAssembly();
-			let sideAngle = (Math.PI / sides) * 2;
-			let sideLength = dia * Math.tan(Math.PI/sides);
-			for (let c = 0; c < sides; c++) {
-					let x = Math.sin(sideAngle * c) * dia / 2;
-					let z = Math.cos(sideAngle * c) * dia / 2;
-					let ry = Math.atan2(x, z);
-					tube.appendChild(createFace(
-						sideLength + 1, height, x, 0, z, 0, ry, 0, texture, sideLength * c, 0));
-			}
-			return tube;
+		let tube = this.createAssembly();
+		let sideAngle = (Math.PI / sides) * 2;
+		let sideLength = dia * Math.tan(Math.PI/sides);
+		for (let c = 0; c < sides; c++) {
+				let x = Math.sin(sideAngle * c) * dia / 2;
+				let z = Math.cos(sideAngle * c) * dia / 2;
+				let ry = Math.atan2(x, z);
+				tube.appendChild(this.createFace(
+					sideLength + 1, height, x, 0, z, 0, ry, 0, texture, sideLength * c, 0));
+		}
+		return tube;
 	}
 
 	createScroll = () => {
-			let barrel = createTube(100, 500, 20, scrollTexture);
-			return barrel;
+		  let scrollTexture = "https://i.imgur.com/Ui7NosV.png";
+			let scroll = this.createTube(100, 500, 20, scrollTexture);
+			return scroll;
 	}
 
-	let scrollBase = document.querySelector('.scroll');
+	appendScroll = () => {
+		let scrollBase = document.querySelector('.scroll');
+		let newScroll = this.createScroll();
+		scrollBase.appendChild(newScroll);
+		return newScroll;
+	}
+	
 
-	scrollBase.appendChild(createScroll());
-
+	componentDidMount() {
+		this.appendScroll()
+	}
 
 	render() {
+
 		return (
-			<div class="scroll reveal">
-				<div class="image">
-					<img src="https://i.imgur.com/7fFgXVs.png" class="scroll-2D" />
+			<>
+				<div className="scroll">
+					<div className="image">
+						<img src="https://i.imgur.com/k5nyQRD.png" className="scroll-2D" alt="scroll" />
+						<Scramble />
+					</div>
 				</div>
-			</div>
+			</>
 		);
 	}
 
