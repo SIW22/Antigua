@@ -33,15 +33,15 @@
 body { 
 	background-color: #007090;
   z-index: 1;
-  perspective: 900px;
-  perspective-origin: 30% 50%;
+  perspective: 1100px;
+  perspective-origin: 33% 50%;
   min-width: 100vw;
   min-height: 100vh;
   font-family: 'Primitive', sans-serif;
 }
 
 .puzzle-card {
-	width: 300px;
+	width: 500px;
 	height: 100px; 
 	background-color: whitesmoke;
 	display: flex;
@@ -233,13 +233,16 @@ img {
 }
 
 .cluePrompt {
-  padding: 20px;
+  padding-top: 20px;
   color: #905040;
+  width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 40px;
   position: absolute;
   margin-bottom: 20px;
   top: 60px;
-  resize: none;
 }
 
 .puzzle-submit-btn {
