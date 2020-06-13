@@ -4,7 +4,7 @@ import Draggable from './Draggable';
 import shuffle from 'shuffle-array'
 import PuzzleModel from '../models/puzzle';
 
-// const answerKey = ['S','T','E','A','M'];
+
 const width = 80;
 
 const Scramble = () => {
@@ -23,7 +23,10 @@ const Scramble = () => {
     })
   }
 
+  const dropZone = document.querySelector('.dropzone');
+
   const handleDrag = useCallback(({translation, id}) => {
+    dropZone.classList.remove('dzincorrect');
     const delta = Math.round(translation.x / width);
     const index = state.order.indexOf(id);
     const dragOrder = state.order.filter(index => index !== id);
@@ -47,13 +50,14 @@ const Scramble = () => {
   }, []);
 
   const submitAnswer = () => {
-    let dropZone = document.querySelector('.dropzone');
     if (JSON.stringify(state.answerKey) === JSON.stringify(state.order)) {
-      dropZone.style.backgroundColor = 'lightgreen';
+      dropZone.classList.add('dzcorrect');
+      dropZone.classList.remove('dzincorrect');
       console.log('Correct');
       return;
     } else {
-      dropZone.style.backgroundColor = '#FF739D';
+      dropZone.classList.add('dzincorrect');
+      dropZone.classList.remove('dzcorrect');
       console.log('Incorrect')
     }
   }
@@ -64,6 +68,9 @@ const Scramble = () => {
   return (
       <>
         <PuzzleArea classname="puzzle-area">
+          <div className="cluePrompt">
+            <h1>{ state.clue }</h1>
+          </div> 
           <Container className="dropzone">
             {state.tiles.map(index => {
               const isDragging = state.draggedIndex === index;
@@ -97,7 +104,8 @@ export default Scramble;
 const PuzzleArea = styled.div`
   height: 400px;
   width: 700px;
-  margin-top: -400px;
+  margin-left: 50px;
+  margin-top: -450px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,7 +123,8 @@ const Container = styled.div`
 const Tile = styled.div.attrs(props => ({
   style: {
     left: `${props.left}px`,
-    transition: props.isDragging ? 'none' : 'all 500ms'
+    transition: props.isDragging ? 'none' : 'all 500ms',
+    fontFamily: 'Kamandungan-Regular'
   }
 }))`
   height: 80px;
@@ -131,7 +140,9 @@ const Tile = styled.div.attrs(props => ({
   align-items: center;
   justify-content: center;
   position: absolute;
-  font-size: 30px;
+  font-size: 40px;
   left: calc(50vh - 150px);
-  color: #403020;
+  color: #F8E9CE;
+  -webkit-text-stroke: 1.5px #605040;
+  transition: ease;
 `

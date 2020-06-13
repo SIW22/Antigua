@@ -2,11 +2,31 @@
 	margin: 0;
   padding: 0;
 }
+@font-face {
+  font-family: 'grocery-rounded.regular';
+  font-style: normal;
+  src: local('grocery-rounded.regular'), local('grocery-rounded.regular'),
+    url(./fonts/grocery-rounded.regular.ttf) format('truetype');
+}
 
 @font-face {
-  font-family: 'Kamandungan';
+  font-family: 'SerpentisBlack';
   font-style: normal;
-  src: local('Kamandungan-Regular'), local('Kamandungan'),
+  src: local('SerpentisBlack'), local('SerpentisBlack'),
+    url(./fonts/SerpentisBlack.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Primitive';
+  font-style: normal;
+  src: local('Primitive'), local('Primitive'),
+    url(./fonts/Primitive.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Kamandungan-Regular';
+  font-style: normal;
+  src: local('Kamandungan-Regular'), local('Kamandungan-Regular'),
     url(./fonts/Kamandungan-Regular.ttf) format('truetype');
 }
 
@@ -14,10 +34,10 @@ body {
 	background-color: #007090;
   z-index: 1;
   perspective: 900px;
-  perspective-origin: center;
+  perspective-origin: 30% 50%;
   min-width: 100vw;
   min-height: 100vh;
-  font-family: 'Kamandungan-Regular', sans-serif;
+  font-family: 'Primitive', sans-serif;
 }
 
 .puzzle-card {
@@ -130,11 +150,10 @@ button {
   position: relative;
   height: 500px;
   width: 900px;
-  margin-left: 75px;
+  margin-left: 100px;
   margin-top: -20px;
   overflow: hidden;
   opacity: 0;
-  /* animation: reveal 3s ease; */
   z-index: 0;
   filter: drop-shadow( 0 10px 10px rgba(0, 0, 0, 0.75));
 }
@@ -179,23 +198,22 @@ img {
 .cylinder {
   position: absolute;
   margin-top: -250px;
-  margin-left: 75px;
+  margin-left: 145px;
   transform-style: preserve-3d;
   backface-visibility: visible;
 }
 
 .assembly {
-  /* animation: rollout 3s ease; */
   animation-fill-mode: forwards;
 }
 
 @keyframes rollout {
   0%   { transform: translateX(0px) rotateY(180deg); }
-  100%  { transform: translateX(880px) rotateY(880deg); }
+  100%  { transform: translateX(850px) rotateY(880deg); }
 }
 
 @keyframes rollup {
-  0%   { transform: translateX(880px) rotateY(880deg); }
+  0%   { transform: translateX(850px) rotateY(880deg); }
   100%  { transform: translateX(0px) rotateY(180deg); }
 }
 
@@ -212,19 +230,65 @@ img {
 	background-color: white;
   transition: .5s linear;
   z-index: 50;
-  top: 100px;
+}
+
+.cluePrompt {
+  padding: 20px;
+  color: #905040;
+  height: 40px;
+  position: absolute;
+  margin-bottom: 20px;
+  top: 60px;
+  resize: none;
 }
 
 .puzzle-submit-btn {
-  margin-top: 150px;
+  margin-top: 200px;
   height: 30px;
-  width: 80px;
+  width: 140px;
+  color: #F8E9CE;
+  background-color: #807060;
+  border-radius: 4px;
+  border: 1.5px solid #605040;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer; 
+  transition: .5s ease;
 }
 
+.puzzle-submit-btn:hover {
+  transform: scale(101%);
+}
+
+.puzzle-submit-btn:focus {
+  border: none;
+}
+
+.puzzle-submit-btn:active {
+  color: whitesmoke;
+  background-color: #605040;
+  border: none;
+  outline: none;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+
+@keyframes correct {
+  0%   {background-color: lightgreen; 
+        box-shadow: 0 0 10px lightgreen;}
+  80%   {background-color: lightgreen; 
+        box-shadow: 0 0 10px lightgreen;}
+  100% {background-color: none;}
+}
 .dzcorrect {
-	background-color: lightgreen;
+  animation: correct 3.5s linear;
 }
 
+
+@keyframes incorrect {
+  0%   {background-color: #FF739D;
+        box-shadow: 0 0 10px #FF739D;}
+  100% {background-color: none;}
+}
 .dzincorrect {
-	background-color: #FF739D;
+  animation: incorrect 1.5s linear;
 }

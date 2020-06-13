@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-// import './fonts/Kamandungan-Regular.ttf';
+import './fonts/Kamandungan-Regular.ttf';
+import './fonts/Primitive.ttf';
+import './fonts/SerpentisBlack.ttf';
+import './fonts/Kamandungan-Regular.ttf';
 
 ReactDOM.render(
   <React.StrictMode>
