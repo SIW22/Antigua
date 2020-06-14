@@ -4,8 +4,8 @@ class CipherBlock extends Component {
 	render() {
 		return (
 			<div>
-   			<span>A</span>
-  			<input type="text" placeholder="_" maxlength="1"></input>
+   			<span className="key-letter">A</span>
+  			<input className="form-inputs" type="text" placeholder="_" maxlength="1"></input>
   		</div>
 		);
 	}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import prefix from 'react-prefixer';
-import Scramble from './Scramble';
+// import Scramble from './Scramble';
 import Cipher from './Cipher';
 
 class Scroll extends Component {
@@ -55,9 +55,8 @@ class Scroll extends Component {
 		return newScroll;
 	}
 	
-
 	componentDidMount() {
-		this.appendScroll()
+		this.appendScroll();
 	}
 
 	render() {
@@ -67,8 +66,8 @@ class Scroll extends Component {
 				<div className="scroll">
 					<div className="image">
 						<img src="https://i.imgur.com/k5nyQRD.png" className="scroll-2D" alt="scroll" />
-						<Scramble />
-						{/* <Cipher /> */}
+						{/* <Scramble /> */}
+						<Cipher />
 					</div>
 				</div>
 			</>

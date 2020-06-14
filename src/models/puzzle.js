@@ -30,7 +30,6 @@ class PuzzleModel {
 		.then(res => res.json())
 	}
 
-
 	static create = (puzzleData) => {
 		return fetch(`${url}/puzzles`, {
 			method: "POST",
