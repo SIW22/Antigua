@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import prefix from 'react-prefixer';
 import Scramble from './Scramble';
-// import { Shaders, Node, GLSL } from "gl-react";
-// import { Surface } from "gl-react-dom";
+import Cipher from './Cipher';
 
 class Scroll extends Component {
 	state = {
@@ -69,6 +68,7 @@ class Scroll extends Component {
 					<div className="image">
 						<img src="https://i.imgur.com/k5nyQRD.png" className="scroll-2D" alt="scroll" />
 						<Scramble />
+						{/* <Cipher /> */}
 					</div>
 				</div>
 			</>

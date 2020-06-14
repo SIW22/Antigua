@@ -15,7 +15,7 @@ const Scramble = () => {
   }, [])
 
   const fetchPuzzleData = () => {
-    PuzzleModel.singlePuzzle()
+    PuzzleModel.singleScramble()
     .then(data =>{
       console.log(data.puzzles);
       const tiles = shuffle(data.puzzles.answerKey.map(l=>l));
@@ -124,7 +124,7 @@ const Tile = styled.div.attrs(props => ({
   style: {
     left: `${props.left}px`,
     transition: props.isDragging ? 'none' : 'all 500ms',
-    fontFamily: 'Kamandungan-Regular'
+    fontFamily: 'SATAM'
   }
 }))`
   height: 80px;
@@ -140,9 +140,9 @@ const Tile = styled.div.attrs(props => ({
   align-items: center;
   justify-content: center;
   position: absolute;
-  font-size: 40px;
+  font-size: 65px;
   left: calc(50vh - 150px);
   color: #F8E9CE;
-  -webkit-text-stroke: 1.5px #605040;
   transition: ease;
+  text-align: -12px;
 `

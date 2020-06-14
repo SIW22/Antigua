@@ -30,13 +30,20 @@
     url(./fonts/Kamandungan-Regular.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: 'SATAM';
+  font-style: normal;
+  src: local('SATAM'), local('SATAM'),
+    url(./fonts/SATAM.TTF) format('truetype');
+}
+
 body { 
 	background-color: #007090;
   z-index: 1;
   perspective: 1100px;
   perspective-origin: 33% 50%;
-  min-width: 100vw;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   font-family: 'Primitive', sans-serif;
 }
 
@@ -57,9 +64,10 @@ body {
 /* MAIN PAGE */
 
 .waves {
-  display: flex;
+  background-size: cover;
   z-index: 2;
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 img {
@@ -84,6 +92,7 @@ img {
 .wave1 {
   position: absolute;
   animation: fadein 6s linear infinite;
+  object-fit: stretch;
 }
 
 .wave2 {

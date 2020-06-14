@@ -27,6 +27,7 @@ class Ocean extends Component {
 
 					<img src="https://i.imgur.com/0FJ8qsU.png" alt="logo" className="logo"></img>
 					
+					
 				</div>
 		);
 	}

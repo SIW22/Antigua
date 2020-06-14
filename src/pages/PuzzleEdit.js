@@ -41,7 +41,7 @@ class PuzzleEdit extends Component {
 							<option value="symbolMatch">Symbol Match</option>
 							<option value="scramble">Scramble</option>
 							<option value="tilePlacement">Tile Placement</option>
-							<option value="Cypher">Cypher</option>
+							<option value="Cipher">Cipher</option>
 						</select>
 					</div>
 					<div className="form-input">

@@ -10,10 +10,26 @@ class PuzzleModel {
 		.then(res => res.json())
 	}
 
-	static singlePuzzle = (puzzleId) => {
-		return fetch(`${url}/puzzles/single`)
+	static singleScramble = (puzzleId) => {
+		return fetch(`${url}/puzzles/scramble`)
 		.then(res => res.json())
 	}
+
+	static singleCipher = (puzzleId) => {
+		return fetch(`${url}/puzzles/cipher`)
+		.then(res => res.json())
+	}
+
+	static singleSymbol = (puzzleId) => {
+		return fetch(`${url}/puzzles/symbol`)
+		.then(res => res.json())
+	}
+
+	static singleTileLoc = (puzzleId) => {
+		return fetch(`${url}/puzzles/tileloc`)
+		.then(res => res.json())
+	}
+
 
 	static create = (puzzleData) => {
 		return fetch(`${url}/puzzles`, {

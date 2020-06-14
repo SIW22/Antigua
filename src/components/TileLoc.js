@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Symbols = () => {
+const TileLoc = () => {
 	return (
 		<div>
 			
@@ -8,4 +8,4 @@ const Symbols = () => {
 	);
 }
 
-export default Symbols;
+export default TileLoc;

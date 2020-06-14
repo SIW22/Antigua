@@ -7,6 +7,7 @@ import './fonts/Kamandungan-Regular.ttf';
 import './fonts/Primitive.ttf';
 import './fonts/SerpentisBlack.ttf';
 import './fonts/Kamandungan-Regular.ttf';
+import './fonts/SATAM.TTF';
 
 ReactDOM.render(
   <React.StrictMode>
