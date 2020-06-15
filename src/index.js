@@ -8,6 +8,7 @@ import './fonts/Primitive.ttf';
 import './fonts/SerpentisBlack.ttf';
 import './fonts/Kamandungan-Regular.ttf';
 import './fonts/SATAM.TTF';
+import './fonts/Temphis Brick.ttf';
 
 ReactDOM.render(
   <React.StrictMode>

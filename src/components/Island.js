@@ -11,7 +11,7 @@ class Island extends Component {
 
 				<img className="island" src="https://i.imgur.com/VdQ116C.png" alt="island" />
 
-				<img className="path1" src="https://i.imgur.com/N1rcyZ7.png" alt="path1" />
+				<img className="path1" src="https://i.imgur.com/CQxqslZ.png" alt="path1" />
 
 				<img className="path2" src="https://i.imgur.com/4LouRe5.png" alt="path2" />
 

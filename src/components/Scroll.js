@@ -9,7 +9,7 @@ import Congrats from './Congrats';
 
 class Scroll extends Component {
 	state = {
-		contents: []
+		contents: [],
 	}
 
 	createAssembly = () => {
@@ -64,17 +64,22 @@ class Scroll extends Component {
 	}
 
 	render() {
+			const componentList = [
+			<Greeting />, 
+			<Scramble />, 
+			<Message1 />, 
+			<Cipher />, 
+			<Congrats /> 
+			];
 
 		return (
 			<>
 				<div className="scroll">
 					<div className="image">
 						<img src="https://i.imgur.com/k5nyQRD.png" className="scroll-2D" alt="scroll" />
-						{/* <Greeting /> */}
-						{/* <Scramble /> */}
-						{/* <Message1 /> */}
-						<Cipher />
-						{/* <Congrats /> */}
+							
+							{ componentList[this.props.scrollIndex] }
+
 					</div>
 				</div>
 			</>

@@ -10,7 +10,8 @@ class Home extends Component {
 
 	state = {
 		puzzle: {},
-		currentPuzzleId: this.props.match.params.id
+		currentPuzzleId: this.props.match.params.id,
+		scrollIndex: 0
 	}
 
 	componentDidMount() {
@@ -24,6 +25,7 @@ class Home extends Component {
 	} 
 
 	rolloutScroll = () => {
+		// this.setState({scrollIndex:1});
 		let parchment1 = document.querySelector('.image');
 		parchment1.classList.add('reveal');
 		parchment1.classList.remove('conceal');
@@ -48,7 +50,7 @@ class Home extends Component {
 			<div>
 				<Ocean />
 				<Island />
-				<Scroll />
+				<Scroll scrollIndex={this.state.scrollIndex} />
 				<Compass />
 
 					<div className="temp-btns">

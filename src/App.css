@@ -37,6 +37,13 @@
     url(./fonts/SATAM.TTF) format('truetype');
 }
 
+@font-face {
+  font-family: 'Temphis Brick';
+  font-style: normal;
+  src: local('Temphis Brick'), local('Temphis Brick'),
+    url(./fonts/Temphis Brick.ttf) format('truetype');
+}
+
 body { 
   background-color: #007090;
   background-size: cover;
@@ -246,7 +253,7 @@ img {
 
 @keyframes conceal {
   0%   {width: 900px;}
-  0%  {opacity: 1;}
+  0%   {opacity: 1;}
   100% {width: 0%;}
   100% {opacity: 1;}
 }
@@ -376,11 +383,15 @@ img {
   justify-content: center;
   align-items: center;
   max-width: 40px;
+  font-family: 'Temphis Brick';
+  font-size: 24px;
+  line-height: 30px;
 }
 
 .form-inputs, .blank-inputs {
   height: 30px;
   width: 30px;
+  color: #F8E9CE;
   text-align: center;
   border-radius: 5px;
   border: 1.5px solid #605040;
