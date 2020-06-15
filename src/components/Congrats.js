@@ -1,20 +1,20 @@
-import React, { Component, Link } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-class Congrats extends Component {
-	render() {
-		return (
-			<div>
-				<PuzzleArea>
-					<Container>
-						<h1>Congratulations!</h1>
-						<h3>Through trials and folly, <br></br>the treasures of Antigua are yours!</h3>
-					</Container>
-					<button className="puzzle-submit-btn"><Link>Play Again?</Link></button>
-				</PuzzleArea>
-			</div>
-		);
-	}
+const Congrats = () => {
+	// render() {
+	return (
+		<div>
+			<PuzzleArea classname="puzzle-area">
+				<Container className="dropzone">
+					<h1>Congratulations!</h1>
+					<h2>Through trials and folly, <br></br>the treasures of Antigua are yours!</h2>
+				</Container>
+				<button className="puzzle-submit-btn">
+				Play Again?</button>
+			</PuzzleArea>
+		</div>
+	);
 }
 
 export default Congrats;
@@ -32,6 +32,7 @@ const PuzzleArea = styled.div`
 const Container = styled.div`
   height: 300px;
   width: 460px;
+	text-align: center;
   align-items: center;
   justify-content: center;
   border-radius: 7px;

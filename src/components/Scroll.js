@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import prefix from 'react-prefixer';
-// import Scramble from './Scramble';
+import Greeting from './Greeting';
+import Scramble from './Scramble';
+import Message1 from './Message1';
 import Cipher from './Cipher';
+import Congrats from './Congrats';
+
 
 class Scroll extends Component {
 	state = {
@@ -66,8 +70,11 @@ class Scroll extends Component {
 				<div className="scroll">
 					<div className="image">
 						<img src="https://i.imgur.com/k5nyQRD.png" className="scroll-2D" alt="scroll" />
+						{/* <Greeting /> */}
 						{/* <Scramble /> */}
+						{/* <Message1 /> */}
 						<Cipher />
+						{/* <Congrats /> */}
 					</div>
 				</div>
 			</>

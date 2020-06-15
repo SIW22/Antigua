@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PuzzleModel from '../models/puzzle';
 import Ocean from '../components/Ocean';
+import Island from '../components/Island';
 import Scroll from '../components/Scroll';
 import Compass from '../components/Compass';
 import '../App.css';
@@ -46,15 +47,18 @@ class Home extends Component {
 		return (
 			<div>
 				<Ocean />
+				<Island />
 				<Scroll />
-
-				<button onClick={ this.rolloutScroll }>Roll Out</button>
-
-				<button onClick={ this.rollupScroll }>Roll Up</button>
-
-				<button>Load Puzzle</button>
-
 				<Compass />
+
+					<div className="temp-btns">
+
+						<button className="roll-up" onClick={ this.rollupScroll }>Roll Up</button>
+
+						<button className="roll-out" onClick={ this.rolloutScroll }>Roll Out</button>
+
+					</div>
+					{/* <button>Load Puzzle</button> */}
 			</div>
 		);
 	}

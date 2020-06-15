@@ -38,12 +38,13 @@
 }
 
 body { 
-	background-color: #007090;
+  background-color: #007090;
+  background-size: cover;
   z-index: 1;
   perspective: 1100px;
-  perspective-origin: 33% 50%;
-  width: 100vw;
-  height: 100vh;
+  perspective-origin: 33% 145%;
+  width: 20vw;
+  height: 20vh;
   font-family: 'Primitive', sans-serif;
 }
 
@@ -63,16 +64,15 @@ body {
 
 /* MAIN PAGE */
 
-.waves {
-  background-size: cover;
-  z-index: 2;
+.ocean-background {
   width: 100%;
   height: 100%;
 }
 
-img {
-  width: 100%;
-  height: 100%;
+.waves {
+  background-size: cover;
+  z-index: 2;
+  transform: scale(3.5, 2);
 }
 
 @keyframes fadein {   
@@ -115,6 +115,31 @@ img {
   animation: fadeout 6s linear infinite;
 }
 
+/* Island */
+
+.island-group {
+  transform: scale(2, 2);
+  margin-top: -150px;
+  margin-left: 350px;
+  position: absolute;
+  z-index: 3;
+  display: flex;
+}
+
+.island, .underwater-sand, .lap {
+  position: absolute;
+  align-self: right;
+}
+
+.path1, .path2, .path3, .path4, .path5 {
+  position: absolute;
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}
+
 /* Logo */
 
 @keyframes gradual-fade {
@@ -129,7 +154,8 @@ img {
 .logo {
   width: 300px;
   height: auto;
-  margin: 50px;
+  margin-top: 50px;
+  margin-left: 400px;
   filter: drop-shadow( 5px 5px 5px rgba(0, 0, 0, .5));
   z-index: 5;
   animation: gradual-fade 10s linear infinite;
@@ -149,10 +175,32 @@ img {
 
 /* SCROLL */
 
-button {
-  padding: 2px 5px;
-  margin: 10px;
+.temp-btns {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  margin-top: 45px;
+  margin-left: 40px;
 }
+
+.roll-out, .roll-up {
+  text-decoration: none;
+  border: none;
+  height: 200px;
+  width: 100px;
+  opacity: 0;
+  z-index: 500;
+  cursor: pointer;
+}
+
+.roll-out {
+  border-radius: 0 100px 100px 0;
+}
+
+.roll-up {
+  border-radius: 100px 0 0 100px;
+}
+
 
 /* 2D Scroll */
 .image {
@@ -160,10 +208,10 @@ button {
   height: 500px;
   width: 900px;
   margin-left: 100px;
-  margin-top: -20px;
+  margin-top: 20px;
   overflow: hidden;
   opacity: 0;
-  z-index: 0;
+  z-index: 5;
   filter: drop-shadow( 0 10px 10px rgba(0, 0, 0, 0.75));
 }
 
@@ -210,6 +258,7 @@ img {
   margin-left: 145px;
   transform-style: preserve-3d;
   backface-visibility: visible;
+  z-index: 6;
 }
 
 .assembly {
@@ -229,6 +278,8 @@ img {
 .puzzle-area {
   width: 700px;
   height: 400px;
+  margin-left: 100px;
+  margin-top: -500px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -236,9 +287,20 @@ img {
 
 .dropZone {
 	opacity: 1;
+  color: #F8E9CE;
+  text-align: center;
 	background-color: white;
   transition: .5s linear;
   z-index: 50;
+}
+
+.dropzone h1 {
+  line-height: 50px;
+  color: #905040;
+}
+
+.dropzone h2 {
+  color: #905040; 
 }
 
 .cluePrompt {
@@ -255,7 +317,8 @@ img {
 }
 
 .puzzle-submit-btn {
-  margin-top: 200px;
+  position: relative;
+  margin-top: 350px;
   height: 30px;
   width: 140px;
   color: #F8E9CE;
@@ -304,3 +367,31 @@ img {
 .dzincorrect {
   animation: incorrect 1.5s linear;
 }
+
+/* Cipher */
+
+.letter-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 40px;
+}
+
+.form-inputs, .blank-inputs {
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1.5px solid #605040;
+  background-color: #807060;
+}
+
+.blank-inputs {
+  opacity: 0;
+}
+
+.key-letter {
+  color: #905040;
+}
+
