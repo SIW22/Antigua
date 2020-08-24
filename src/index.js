@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import './fonts/Kamandungan-Regular.ttf';
+import './fonts/Primitive.ttf';
+import './fonts/SerpentisBlack.ttf';
+import './fonts/Kamandungan-Regular.ttf';
+import './fonts/SATAM.TTF';
+import './fonts/Temphis Brick.ttf';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

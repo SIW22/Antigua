@@ -1,0 +1,408 @@
+* {
+	margin: 0;
+  padding: 0;
+}
+@font-face {
+  font-family: 'grocery-rounded.regular';
+  font-style: normal;
+  src: local('grocery-rounded.regular'), local('grocery-rounded.regular'),
+    url(./fonts/grocery-rounded.regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'SerpentisBlack';
+  font-style: normal;
+  src: local('SerpentisBlack'), local('SerpentisBlack'),
+    url(./fonts/SerpentisBlack.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Primitive';
+  font-style: normal;
+  src: local('Primitive'), local('Primitive'),
+    url(./fonts/Primitive.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Kamandungan-Regular';
+  font-style: normal;
+  src: local('Kamandungan-Regular'), local('Kamandungan-Regular'),
+    url(./fonts/Kamandungan-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'SATAM';
+  font-style: normal;
+  src: local('SATAM'), local('SATAM'),
+    url(./fonts/SATAM.TTF) format('truetype');
+}
+
+@font-face {
+  font-family: 'Temphis Brick';
+  font-style: normal;
+  src: local('Temphis Brick'), local('Temphis Brick'),
+    url(./fonts/Temphis Brick.ttf) format('truetype');
+}
+
+body { 
+  background-color: #007090;
+  background-size: cover;
+  z-index: 1;
+  perspective: 1100px;
+  perspective-origin: 33% 145%;
+  width: 20vw;
+  height: 20vh;
+  font-family: 'Primitive', sans-serif;
+}
+
+.puzzle-card {
+	width: 500px;
+	height: 100px; 
+	background-color: whitesmoke;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	line-height: 20px;
+	margin: 10px;
+	padding: 10px;
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* MAIN PAGE */
+
+.ocean-background {
+  width: 100%;
+  height: 100%;
+}
+
+.waves {
+  background-size: cover;
+  z-index: 2;
+  transform: scale(3.5, 2);
+}
+
+@keyframes fadein {   
+  0%, 100% { opacity: 0; }
+  25% { opacity: .1 }
+  50% { opacity: .0; }
+  75% { opacity: .1; }
+}
+
+@keyframes fadeout {
+  0%, 100% { opacity: .1; }
+  25% { opacity: 0; }
+  50% { opacity: .1; }
+  75% { opacity: 0; }
+}
+
+.wave1 {
+  position: absolute;
+  animation: fadein 6s linear infinite;
+  object-fit: stretch;
+}
+
+.wave2 {
+  position: absolute;
+  transform: rotate(180deg);
+  animation-delay: 1.5s;
+  animation: fadeout 6s linear infinite;
+}
+
+.wave3 {
+  position: absolute;
+  animation-delay: 3s;
+  animation: fadein 6s linear infinite;
+}
+
+.wave4 {
+  position: absolute;
+  transform: rotate(180deg);
+  animation-delay: 4.5s;
+  animation: fadeout 6s linear infinite;
+}
+
+/* Island */
+
+.island-group {
+  transform: scale(2, 2);
+  margin-top: -150px;
+  margin-left: 350px;
+  position: absolute;
+  z-index: 3;
+  display: flex;
+}
+
+.island, .underwater-sand, .lap {
+  position: absolute;
+  align-self: right;
+}
+
+.path1, .path2, .path3, .path4, .path5 {
+  position: absolute;
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}
+
+/* Logo */
+
+@keyframes gradual-fade {
+  0%, 100% { opacity: 100% }
+  30% { opacity: 100% }
+  40% { opacity: 50% }
+  50% { z-index: 0 }
+  60% { opacity: 0% }
+  90% { opacity: 0% }
+}
+
+.logo {
+  width: 300px;
+  height: auto;
+  margin-top: 50px;
+  margin-left: 400px;
+  filter: drop-shadow( 5px 5px 5px rgba(0, 0, 0, .5));
+  z-index: 5;
+  animation: gradual-fade 10s linear infinite;
+}
+
+/* Compass */
+
+.compass {
+  width: 200px;
+  height: 200px;
+  margin-left: 40px;
+  margin-top: 45px;
+  position: absolute;
+  z-index: 25;
+  filter: drop-shadow( 0px 5px 5px rgba(0, 0, 0, .5)); 
+}
+
+/* SCROLL */
+
+.temp-btns {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  margin-top: 45px;
+  margin-left: 40px;
+}
+
+.roll-out, .roll-up {
+  text-decoration: none;
+  border: none;
+  height: 200px;
+  width: 100px;
+  opacity: 0;
+  z-index: 500;
+  cursor: pointer;
+}
+
+.roll-out {
+  border-radius: 0 100px 100px 0;
+}
+
+.roll-up {
+  border-radius: 100px 0 0 100px;
+}
+
+
+/* 2D Scroll */
+.image {
+  position: relative;
+  height: 500px;
+  width: 900px;
+  margin-left: 100px;
+  margin-top: 20px;
+  overflow: hidden;
+  opacity: 0;
+  z-index: 5;
+  filter: drop-shadow( 0 10px 10px rgba(0, 0, 0, 0.75));
+}
+
+.reveal {
+  animation: reveal 3s ease;
+  opacity: 1;
+}
+
+.rollout {
+  animation: rollout 3s ease;
+}
+
+.conceal {
+  animation: conceal 3s ease;
+}
+
+.rollup {
+  animation: rollup 3s ease;
+}
+
+img {
+  height: 500px;
+  width: auto;
+}
+
+@keyframes reveal {
+  0%   {width: 0%;}
+  0%   {opacity: 1;}
+  100% {width: 900px;}
+  100% {opacity: 1;}
+}
+
+@keyframes conceal {
+  0%   {width: 900px;}
+  0%   {opacity: 1;}
+  100% {width: 0%;}
+  100% {opacity: 1;}
+}
+
+/* 3D Scroll */
+.cylinder {
+  position: absolute;
+  margin-top: -250px;
+  margin-left: 145px;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  z-index: 6;
+}
+
+.assembly {
+  animation-fill-mode: forwards;
+}
+
+@keyframes rollout {
+  0%   { transform: translateX(0px) rotateY(180deg); }
+  100%  { transform: translateX(850px) rotateY(880deg); }
+}
+
+@keyframes rollup {
+  0%   { transform: translateX(850px) rotateY(880deg); }
+  100%  { transform: translateX(0px) rotateY(180deg); }
+}
+
+.puzzle-area {
+  width: 700px;
+  height: 400px;
+  margin-left: 100px;
+  margin-top: -500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropZone {
+	opacity: 1;
+  color: #F8E9CE;
+  text-align: center;
+	background-color: white;
+  transition: .5s linear;
+  z-index: 50;
+}
+
+.dropzone h1 {
+  line-height: 50px;
+  color: #905040;
+}
+
+.dropzone h2 {
+  color: #905040; 
+}
+
+.cluePrompt {
+  padding-top: 20px;
+  color: #905040;
+  width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  position: absolute;
+  margin-bottom: 20px;
+  top: 60px;
+}
+
+.puzzle-submit-btn {
+  position: relative;
+  margin-top: 350px;
+  height: 30px;
+  width: 140px;
+  color: #F8E9CE;
+  background-color: #807060;
+  border-radius: 4px;
+  border: 1.5px solid #605040;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer; 
+  transition: .5s ease;
+}
+
+.puzzle-submit-btn:hover {
+  transform: scale(101%);
+}
+
+.puzzle-submit-btn:focus {
+  border: none;
+}
+
+.puzzle-submit-btn:active {
+  color: whitesmoke;
+  background-color: #605040;
+  border: none;
+  outline: none;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+
+@keyframes correct {
+  0%   {background-color: lightgreen; 
+        box-shadow: 0 0 10px lightgreen;}
+  80%   {background-color: lightgreen; 
+        box-shadow: 0 0 10px lightgreen;}
+  100% {background-color: none;}
+}
+.dzcorrect {
+  animation: correct 3.5s linear;
+}
+
+
+@keyframes incorrect {
+  0%   {background-color: #FF739D;
+        box-shadow: 0 0 10px #FF739D;}
+  100% {background-color: none;}
+}
+.dzincorrect {
+  animation: incorrect 1.5s linear;
+}
+
+/* Cipher */
+
+.letter-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 40px;
+  font-family: 'Temphis Brick';
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.form-inputs, .blank-inputs {
+  height: 30px;
+  width: 30px;
+  color: #F8E9CE;
+  text-align: center;
+  border-radius: 5px;
+  border: 1.5px solid #605040;
+  background-color: #807060;
+}
+
+.blank-inputs {
+  opacity: 0;
+}
+
+.key-letter {
+  color: #905040;
+}
+
